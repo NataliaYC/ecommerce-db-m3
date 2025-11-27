@@ -80,6 +80,8 @@ DELETE FROM Customers;
 DELETE FROM Categories;
 
 
+
+>>>>>>> 459e011d4fb3c5ce9ddab244f40da4962c1dc77c
 --INSERTAR SEED--
 
 -- 1. Insertar CATEGORIES
@@ -109,9 +111,15 @@ INSERT INTO Inventory (product_id, stock_quantity) VALUES
 
 -- 4. Insertar CUSTOMERS
 INSERT INTO Customers (customer_id, first_name, last_name, email, password_hash) VALUES
+<<<<<<< HEAD
 (201, 'Natalia', 'Perez', 'natalia.perez@example.com', 'hash123'), -- Cliente Frecuente
 (202, 'Andres', 'Gomez', 'andres.gomez@example.com', 'hash456'),
 (203, 'Sofia', 'Rojas', 'sofia.rojas@example.com', 'hash789');
+=======
+(201, 'Natalia', 'Perez', 'natalia.perez@gmail.com', 'hash123'), -- Cliente Frecuente
+(202, 'Andres', 'Gomez', 'andres.gomez@gmail.com', 'hash456'),
+(203, 'Sofia', 'Rojas', 'sofia.rojas@gmail.com', 'hash789');
+>>>>>>> 459e011d4fb3c5ce9ddab244f40da4962c1dc77c
 
 -- 5. Insertar ORDERS (Fechas para simular Ventas por Mes)
 INSERT INTO Orders (order_id, customer_id, order_date, total_amount, status) VALUES
@@ -171,7 +179,11 @@ LIMIT 2;
 
 --ventas monto total por mes y por categoria solo de pedidos entregados--
 SELECT
+<<<<<<< HEAD
     TO_CHAR(o.order_date, 'YYYY-MM') AS sales_month, 
+=======
+    STRFTIME('%Y-%m', o.order_date) AS sales_month, --TO_CHAR --
+>>>>>>> 459e011d4fb3c5ce9ddab244f40da4962c1dc77c
     c.name AS category_name,
     SUM(o.total_amount) AS monthly_category_revenue
 FROM
@@ -227,6 +239,7 @@ HAVING
     COUNT(o.order_id) >= 3;
 
 
+<<<<<<< HEAD
 
 -- TRANSACCIÓN: CREAR ORDEN Y DESCONTAR STOCK --
 -- Sustitución de valores fijos: Order ID 3007, Cliente 202
@@ -276,3 +289,5 @@ WHERE
 
 -- 6. CONFIRMAR si todos los pasos anteriores fueron exitosos
 COMMIT;
+=======
+>>>>>>> 459e011d4fb3c5ce9ddab244f40da4962c1dc77c
